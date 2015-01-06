@@ -7,14 +7,14 @@
 </script>
 
 <script type="text/template" class="quest-template">
-    <div class="content">
+    <div class="quest-content" id="<%%= content.id %>">
       <p><%%= content.question %></p>
-      <select name="question" id="<%%= content.id %>">
+      <select name="question">
         <%% _.each(content.choices, function(e) { %>
           <option value="<%%= e %>"><%%= e %></option>
         <%% }); %>
       </select>
-      <input type="submit">
+      <input type="submit" class="submission">
     </div>
 </script>
 

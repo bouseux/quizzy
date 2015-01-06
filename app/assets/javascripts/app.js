@@ -23,6 +23,13 @@ $(function() {
 });
 
 $(function() {
+  var counter = 1; 
+  var score = 0; 
+  var showCurrent = function(){
+    $('.quest-content').hide();
+    $('#' + counter + '.quest-content').show();
+  };
+
   $("#quizzes-display").on("click", ".quiz-title", function(e) {
     var $quizId = $(this).attr('id');
     $.ajax({
@@ -30,6 +37,7 @@ $(function() {
       success: function(data) {
         var $questDisplay = $('#questions-display');
         data.forEach(function(x) {
+
           var template = $(".quest-template").html();
           var uncompiledTemplate = _.template(template);
           var choices = x.choices.split(';');
@@ -38,6 +46,7 @@ $(function() {
             content: {
               id: x.id, 
               question: x.question, 
+              answer: x.answer, 
               choices: choices
             }
           });
@@ -46,7 +55,27 @@ $(function() {
           $questDisplay.append($el);
 
         });
+        showCurrent();
       }
     });
   });
+
+  $("#questions-display").on("click", ".submission", function(e) {
+    counter++; 
+
+    $guess = 
+    $.ajax({
+
+    });
+
+
+    showCurrent();
+  }); 
+
+
+
+
+
+
+
 });
