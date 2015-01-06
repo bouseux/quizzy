@@ -1,3 +1,27 @@
 <h2>Quizzy Quiz</h2>
 
-<p>Your single page app should go here.</p>
+<script type="text/template" class="my-template">
+    <div class="content">
+      <h3 class="quiz-title" id="<%%= content.id %>"><%%= content.title %></h3>
+    </div>
+</script>
+
+<script type="text/template" class="quest-template">
+    <div class="content">
+      <p><%%= content.question %></p>
+      <select name="question" id="<%%= content.id %>">
+        <%% _.each(content.choices, function(e) { %>
+          <option value="<%%= e %>"><%%= e %></option>
+        <%% }); %>
+      </select>
+      <input type="submit">
+    </div>
+</script>
+
+<div id="quizzes-display">
+</div>
+
+<div id="questions-display">
+</div>
+
+
