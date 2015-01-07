@@ -11,11 +11,18 @@
     $html.children('.quiz').on('click', function() {
       var id = $(this).data("id");
       _view.destroy();
-      var questionsController = new Controllers.QuestionsController(_view.element, id);
+      // 1. AJAX request to quizzes/5/questions (model)
+      // 2. display the page (view)
+      var questionsController = new Controllers.Question(_view.element, id);
       questionsController.showFirstQuestion();
     });
-    $el.append($html);
+
   };
+
+  QuizView.prototype.destroy = function() {
+    // clear the element
+    // turn off triggers
+  }; 
 
   window.Views = window.Views || {};
   window.Views.Quiz = QuizView;

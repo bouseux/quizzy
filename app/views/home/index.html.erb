@@ -1,6 +1,9 @@
 <div id="quizzes-display">
 
 </div>
+<div id="questions-display">
+
+</div>
 
 <script type="text/template" class="quizzes-template">
   <h1>Here are the quizzes</h1>
@@ -18,10 +21,10 @@
 
 <script type="text/template" class="quest-template">
 
-    <div class="quest-content" id="<%%= content.id %>">
-      <p><%%= content.question %></p>
+    <div class="quest-content" id="<%%= questions[0].id %>">
+      <p><%%= questions[0].question %></p>
       <select name="question" class="ans-content">
-        <%% _.each(content.choices, function(e) { %>
+        <%% _.each(questions[0].choices, function(e) { %>
           <option value="<%%= e %>"><%%= e %></option>
         <%% }); %>
       </select>
