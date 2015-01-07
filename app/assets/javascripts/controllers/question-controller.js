@@ -5,10 +5,15 @@
   }
 
   QuestionController.prototype.showFirstQuestion = function() {
-    _view = this;
+    var _controller = this;
     Models.Question.fetch(this.quizId, function(questions) {
-      var questionView = new Views.Question(_view.viewElement, questions);
+      _controller.questions = questions;
+      var questionView = new Views.Question(_controller.viewElement, questions, _controller); 
     });
+  };
+
+  QuestionController.prototype.showNextQuestion = function() {
+    
   };
 
   window.Controllers = window.Controllers || {};

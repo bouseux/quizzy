@@ -1,11 +1,16 @@
+// Question view takes in array of questions. Force next question controller to pass in an array
+// Question view takes in single question. force question-controller to pass in a single question
+// Create separate views for each scenario
 (function() {
-  var QuestionView = function(viewElement, questions) {
+  var QuestionView = function(viewElement, questions, controller) {
     this.viewElement = viewElement; 
-    this.questions = questions; 
+    this.questions = questions;
+    this.controller = controller;
+    
+    var count = 0; 
+    var score = 0;  
 
-    count = 0; 
-    score = 0; 
-    this.question = questions[count]; 
+    this.question = questions[count];
 
     var template = $('.quest-template').html();
     var uncompiledTemplate = _.template(template);
@@ -14,8 +19,7 @@
     var _this = this;
 
     $compiledTemplate.children(".submission").on("click", function() {
-      // Display Next Question
-      // Show the score after the quiz is completed
+
       var score = 0;
       var guess = $(".ans-content").val();
 
@@ -33,7 +37,7 @@
       }, 1000);
 
       count += 1;
-      // var newQuestionController = new Controllers.newQuestion(_)
+      _this.controller.showNextQuestion();
 
     });
   };

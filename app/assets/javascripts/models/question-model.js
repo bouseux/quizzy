@@ -3,6 +3,7 @@
     this.id = data.id;
     this.question = data.question;
     this.answer = data.answer;
+    this.quizId = data.quiz_id;
     this.choices = data.choices.split(";");
     this.type = data.type;
   }; 
@@ -14,6 +15,15 @@
       });
       if (cb) {
         cb(questObjs);
+      }
+    });
+  };
+
+  Question.find = function(quizId, questId, cb) {
+    $.get("/quizzes/" + quizId + "/questions/" + questId, function(question) {
+      var nextQuestion = new Question(question);
+      if (cb) {
+        cb(nextQuestion);
       }
     });
   };
