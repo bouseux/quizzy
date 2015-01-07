@@ -22,6 +22,7 @@
   QuizView.prototype.destroy = function() {
     // clear the element
     // turn off triggers
+    this.element.html('');
   }; 
 
   window.Views = window.Views || {};

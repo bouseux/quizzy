@@ -5,7 +5,7 @@
     this.answer = data.answer;
     this.choices = data.choices.split(";");
     this.type = data.type;
-  }
+  }; 
 
   Question.fetch = function(quizId, cb) {
     $.get("/quizzes/" + quizId + "/questions", function(questions) {
@@ -17,6 +17,7 @@
       }
     });
   };
+
 
   window.Models = window.Models || {};
   window.Models.Question = Question;

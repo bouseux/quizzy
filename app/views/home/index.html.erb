@@ -1,12 +1,9 @@
+<h1>Quizzy Quiz</h1>
 <div id="quizzes-display">
-
-</div>
-<div id="questions-display">
-
 </div>
 
 <script type="text/template" class="quizzes-template">
-  <h1>Here are the quizzes</h1>
+  <h3>Here are the quizzes</h3>
   <ul>
     <%% _.each(quizzes, function(quiz) { %>
       <li class="quiz" data-id="<%%= quiz.id %>"><%%= quiz.title %></li>
@@ -14,17 +11,12 @@
   </ul>
 </script>
 
-
-
-
-
-
 <script type="text/template" class="quest-template">
 
-    <div class="quest-content" id="<%%= questions[0].id %>">
-      <p><%%= questions[0].question %></p>
+    <div class="quest-content" id="<%%= question.id %>">
+      <p><%%= question.question %></p>
       <select name="question" class="ans-content">
-        <%% _.each(questions[0].choices, function(e) { %>
+        <%% _.each(question.choices, function(e) { %>
           <option value="<%%= e %>"><%%= e %></option>
         <%% }); %>
       </select>
@@ -32,4 +24,3 @@
     </div>
 
 </script>
-
