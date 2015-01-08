@@ -4,26 +4,24 @@
 (function() {
   var QuestionView = function(viewElement, question, controller) {
     this.viewElement = viewElement; 
-    this.controller = controller;
     this.question = question; 
+    this.controller = controller;
 
     var template = $('.quest-template').html();
     var uncompiledTemplate = _.template(template);
     var $compiledTemplate = $(uncompiledTemplate({question: this.question}));
     $("#quizzes-display").html('');
     this.viewElement.append($compiledTemplate);
-    var _this = this;
+    var _view = this;
 
     $compiledTemplate.children(".submission").on("click", function() {
 
-      var score = 0;
       var guess = $(".ans-content").val();
-
-      var answer = _this.question.answer;
+      var answer = _view.question.answer;
 
       if (guess === answer) {
         $("#quizzes-display").append("<p class='correctness'>Correct!</p>");
-        _this.controller.score += 1;
+        _view.controller.score += 1;
       }
       else {
         $("#quizzes-display").append("<p class='correctness'>Incorrect!</p>");
@@ -33,7 +31,7 @@
         $('.correctness').remove();
       }, 1000);
 
-      _this.controller.showNextQuestion();
+      _view.controller.showNextQuestion();
 
     });
   };

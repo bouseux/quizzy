@@ -19,6 +19,20 @@
     });
   };
 
+  Quiz.create = function(quiz, cb) {
+    $.ajax({
+      method: "POST", 
+      url: "/quizzes",
+      data: {"quiz[title]": quiz},
+      success: function(data) {
+        var newQuiz = new Quiz(data); 
+        if (cb) {
+          cb(newQuiz);
+        }
+      }
+    });
+  };
+
   Quiz.prototype.save = function(cb) {
     // use this.id, this.title to make ajax request
   };

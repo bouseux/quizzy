@@ -1,7 +1,8 @@
 (function() {
-  var QuizView = function($el, quizzes) {
+  var QuizView = function($el, quizzes, controller) {
     this.element = $el;
     this.quizzes = quizzes;
+    this.controller = controller;
     var template = $('.quizzes-template').html();
     var uncompiledTemplate = _.template(template);
     var $html = $(uncompiledTemplate({quizzes: this.quizzes}));
@@ -17,6 +18,13 @@
       questionsController.showFirstQuestion();
     });
 
+    $("#quiz-creation").on("click", "#create-new-quiz", function(e) {
+      e.preventDefault();
+
+      var $quizTitle = $("#create-quiz").val();
+      _view.controller.createNewQuiz($quizTitle);
+      console.log("TEST");
+    });
   };
 
   QuizView.prototype.destroy = function() {

@@ -5,7 +5,6 @@
     this.answer = data.answer;
     this.quizId = data.quiz_id;
     this.choices = data.choices.split(";");
-    this.type = data.type;
   }; 
 
   Question.fetch = function(quizId, cb) {

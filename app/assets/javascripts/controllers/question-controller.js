@@ -16,19 +16,24 @@
   };
 
   QuestionController.prototype.showNextQuestion = function() {
-    _controller = this; 
-    setTimeout(function() {
-      _controller.count++; 
-      var questions = _controller.questions;
-      var nextQuestion = questions[_controller.count]; 
-      var questionView = new Views.Question(_controller.viewElement, nextQuestion, _controller); 
-    }, 1000);
+    var _controller = this; 
 
-    if (this.count === this.questions.length-1) {
-      alert("You've scored " + this.score + "/" + this.questions.length + " on this quiz!");
-      $("#quizzes-display").empty();
-      var controller = new Controllers.Quiz($("#quizzes-display"));
-      controller.showQuizzes();
+    if (_controller.count === _controller.questions.length-1) {
+      setTimeout(function() {
+        alert("You've scored " + _controller.score + "/" + _controller.questions.length + " on this quiz!");
+        $("#quizzes-display").empty();
+        var controller = new Controllers.Quiz($("#quizzes-display"));
+        controller.showQuizzes();
+        
+      }, 1000);
+    }
+    else {
+      setTimeout(function() {
+        _controller.count++; 
+        var questions = _controller.questions;
+        var nextQuestion = questions[_controller.count]; 
+        var questionView = new Views.Question(_controller.viewElement, nextQuestion, _controller); 
+      }, 1000);
     }
   };
 

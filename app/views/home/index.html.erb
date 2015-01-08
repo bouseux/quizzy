@@ -4,6 +4,14 @@
 
 <script type="text/template" class="quizzes-template">
   <h3>Here are the quizzes</h3>
+  <div id="quiz-creation">
+    <form>
+      <div>
+        <input id="create-quiz" type="text" name="create-quiz" placeholder="Create New Quiz">
+      </div>
+      <input type="submit" id="create-new-quiz">
+    </form>
+  </div>
   <ul>
     <%% _.each(quizzes, function(quiz) { %>
       <li class="quiz" data-id="<%%= quiz.id %>"><%%= quiz.title %></li>
