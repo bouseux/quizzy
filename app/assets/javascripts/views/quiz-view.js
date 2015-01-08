@@ -12,18 +12,27 @@
     $html.children('.quiz').on('click', function() {
       var id = $(this).data("id");
       _view.destroy();
-      // 1. AJAX request to quizzes/5/questions (model)
-      // 2. display the page (view)
-      var questionsController = new Controllers.Question(_view.element, id);
-      questionsController.showFirstQuestion();
+
+      $div = $("<div class='quiz-buttons'/>");
+      $quizButton = $("<button/>");
+      $questionButton = $("<button/>");
+      $quizButton.addClass("take-quiz");
+      $quizButton.html("Take Quiz");
+      $quizButton.data("id", id);
+      $questionButton.addClass("add-question");
+      $questionButton.html("Add Question");
+      $questionButton.data("id", id);
+      $div.append($quizButton);
+      $div.append($questionButton); 
+      $el.append($div);  
+      _view.controller.quizIntermediary();
+
     });
 
-    $("#quiz-creation").on("click", "#create-new-quiz", function(e) {
-      e.preventDefault();
+    $("#quiz-creation").on("click", "#create-new-quiz", function() {
 
       var $quizTitle = $("#create-quiz").val();
       _view.controller.createNewQuiz($quizTitle);
-      console.log("TEST");
     });
   };
 

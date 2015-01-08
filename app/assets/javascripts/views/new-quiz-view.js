@@ -10,7 +10,6 @@
     var compiledTemplate = uncompiledTemplate({quiz: this.quiz});
     $el.append(compiledTemplate);
 
-    var _view = this;
 
   };
 

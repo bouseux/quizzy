@@ -12,11 +12,17 @@
   };
 
   QuizController.prototype.createNewQuiz = function(quizTitle) {
-    var $el = $(this.parentElement); 
+    var $el = $(this.parentElement);
     var _controller = this;
     Models.Quiz.create(quizTitle, function(newQuiz) {
       var newQuizView = new Views.newQuiz($el, newQuiz, _controller);
     });
+  };
+
+  QuizController.prototype.quizIntermediary = function() {
+    var $el = this.parentElement;
+    var _controller = this;
+    var intermediateView = new Views.singleQuiz($el, _controller);
   };
 
   window.Controllers = window.Controllers || {};
