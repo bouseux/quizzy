@@ -38,6 +38,15 @@
   };
 
 
+  QuestionController.prototype.createQuestion = function(quizId, question, answer, choices) {
+    var $el = this.viewElement;
+    var _controller = this;
+    Models.Question.create(quizId, question, answer, choices, function(newQuestion) {
+      var newQuestionView = new Views.NewQuestion($el, newQuestion, _controller);
+    });
+  };
+
+
   window.Controllers = window.Controllers || {};
   window.Controllers.Question = QuestionController;
 })();

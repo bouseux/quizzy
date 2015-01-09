@@ -14,14 +14,13 @@
       _view.destroy();
 
       $div = $("<div class='quiz-buttons'/>");
+      $div.data("id", id);
       $quizButton = $("<button/>");
       $questionButton = $("<button/>");
       $quizButton.addClass("take-quiz");
       $quizButton.html("Take Quiz");
-      $quizButton.data("id", id);
       $questionButton.addClass("add-question");
       $questionButton.html("Add Question");
-      $questionButton.data("id", id);
       $div.append($quizButton);
       $div.append($questionButton); 
       $el.append($div);  
@@ -37,8 +36,6 @@
   };
 
   QuizView.prototype.destroy = function() {
-    // clear the element
-    // turn off triggers
     this.element.html('');
   }; 
 

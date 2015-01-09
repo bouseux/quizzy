@@ -1,5 +1,5 @@
 (function() {
-  var newQuizView = function($el, quiz, controller) {
+  var NewQuizView = function($el, quiz, controller) {
     this.element = $el;
     this.quiz = quiz;
     this.controller = controller;
@@ -15,5 +15,5 @@
 
 
   window.Views = window.Views || {};
-  window.Views.newQuiz = newQuizView;
+  window.Views.NewQuiz = NewQuizView;
 })();

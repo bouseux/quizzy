@@ -27,6 +27,23 @@
     });
   };
 
+  Question.create = function(quizId, question, answer, choices, cb) {
+    $.ajax({
+      method: "POST", 
+      url: "/quizzes/" + quizId + "/questions",
+      data: {"question[question]": question, 
+        "question[answer]": answer, 
+        "question[choices]": choices
+      },
+      success: function(data) {
+        var newQuestion = new Question(data);
+        if (cb) {
+          cb(data);
+        }
+      }
+    });
+  };
+
 
   window.Models = window.Models || {};
   window.Models.Question = Question;
